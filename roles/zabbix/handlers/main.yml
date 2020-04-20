@@ -1,0 +1,59 @@
+---
+- name: create_mysql_database
+  mysql_db:
+    name: "{{ mysql_db_name }}"
+    state: present
+
+- name: create_mysql_user
+  mysql_user:
+    name: "{{ mysql_user_name }}"
+    password: "{{ mysql_user_password }}"
+    priv: "{{ mysql_user_priv }}"
+    state: present
+
+- name: init_mysql_for_zabbix
+  shell: zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql -u"{{ mysql_user_name }}" -p"{{ mysql_user_password }}" zabbix
+  args:
+    executable: /bin/bash
+
+- name: edit_zabbix_server.conf
+  lineinfile:
+    path: "/etc/zabbix/zabbix_server.conf"
+    regexp: '^DBPassword= '
+    insertafter: '^# DBPassword='
+    line: DBPassword="{{ mysql_user_password }}"
+
+- name: edit_zabbix.conf
+  lineinfile:
+    path: "/etc/php-fpm.d/zabbix.conf"
+    regexp: '^php_value[date.timezone] = '
+    insertafter: '^; php_value[date.timezone] ='
+    line: php_value[date.timezone] = "{{ timezone }}"
+
+- name: restart_zabbix-server
+  systemd:
+    name: zabbix-server
+    state: restarted
+    daemon_reload: yes
+    enabled: yes
+
+- name: restart_zabbix-agent
+  systemd:
+    name: zabbix-agent
+    state: restarted
+    daemon_reload: yes
+    enabled: yes
+
+- name: restart_httpd
+  systemd:
+    name: httpd
+    state: restarted
+    daemon_reload: yes
+    enabled: yes
+
+- name: restart_php-fpm
+  systemd:
+    name: php-fpm
+    state: restarted
+    daemon_reload: yes
+    enabled: yes

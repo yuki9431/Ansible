@@ -1,0 +1,7 @@
+---
+user: zabbix-monitor
+uid: 1000
+shell: /bin/bash
+password: PASSWORD
+group: admin
+gid: 1000

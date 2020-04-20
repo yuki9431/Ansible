@@ -1,0 +1,15 @@
+---
+- name: create group
+  group:
+    name={{ group }}
+    gid={{ gid }}
+  become: yes
+
+- name: create user
+  user:
+    name={{ user }}
+    shell={{ shell }}
+    uid={{ uid }}
+    password={{ password }}
+    groups={{ group }}
+  become: yes

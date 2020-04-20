@@ -1,0 +1,7 @@
+---
+- hosts: zabbix
+  roles:
+    - create_user_and_group
+    - firewalld
+    - mariadb
+    - zabbix

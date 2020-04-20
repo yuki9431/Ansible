@@ -1,0 +1,8 @@
+---
+- name: config firewalld
+  firewalld:
+    service: "{{ service }}"
+    permanent: yes
+    state: enabled
+  notify:
+    - restart_firewalld

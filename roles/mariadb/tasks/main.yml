@@ -1,0 +1,7 @@
+---
+- name: latest mariadb version installed
+  yum:
+    name: "{{ packages }}"
+    state: latest
+  notify:
+    - restart_mariadb
