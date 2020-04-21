@@ -1,7 +1,7 @@
 ---
-user: zabbix-monitor
+user: USER_NAME
 uid: 1000
 shell: /bin/bash
 password: PASSWORD
-group: admin
+group: GROUP_NAME
 gid: 1000
