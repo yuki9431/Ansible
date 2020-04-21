@@ -3,5 +3,10 @@
   yum:
     name: "{{ packages }}"
     state: latest
+  become: yes
+  vars:
+    packages:
+      - mariadb
+      - mariadb-server
   notify:
     - restart_mariadb
