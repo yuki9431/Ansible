@@ -4,7 +4,7 @@
     name: pymysql
     state: present
 
-- name: Zabbix4.0 yum repository
+- name: Zabbix yum repository
   yum:
     name: "{{ repo_base_url }}"
 
@@ -12,6 +12,11 @@
   yum:
     name: "{{ packages }}"
     state: latest
+  vars:
+    packages:
+      - zabbix-server-mysql
+      - zabbix-web-mysql
+      - zabbix-agent
   notify:
     - create_mysql_database 
     - create_mysql_user

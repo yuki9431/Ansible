@@ -12,7 +12,7 @@
     state: present
 
 - name: init_mysql_for_zabbix
-  shell: zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql -u"{{ mysql_user_name }}" -p"{{ mysql_user_password }}" zabbix
+  shell: zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql -u"{{ mysql_user_name }}" -p"{{ mysql_user_password }}" "{{ mysql_db_name }}"
   args:
     executable: /bin/bash
 
