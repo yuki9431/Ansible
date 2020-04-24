@@ -3,6 +3,8 @@
   mysql_db:
     name: "{{ mysql_db_name }}"
     state: present
+    encoding: utf8
+    collation: utf8_bin
 
 - name: create_mysql_user
   mysql_user:
@@ -21,7 +23,7 @@
     path: "/etc/zabbix/zabbix_server.conf"
     regexp: '^DBPassword= '
     insertafter: '^# DBPassword='
-    line: DBPassword="{{ mysql_user_password }}"
+    line: DBPassword={{ mysql_user_password }}
 
 - name: edit_zabbix.conf
   lineinfile:
