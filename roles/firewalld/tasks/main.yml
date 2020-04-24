@@ -1,5 +1,12 @@
 ---
-- name: config firewalld
+- name: config firewalld(zabbix port)
+  firewalld:
+    port: 10050-10051/tcp
+    permanent: yes
+    state: enabled
+  become: yes
+
+- name: config firewalld(http)
   firewalld:
     service: http
     permanent: yes
