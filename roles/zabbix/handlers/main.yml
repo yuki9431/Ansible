@@ -18,7 +18,20 @@
   args:
     executable: /bin/bash
 
-- name: edit_zabbix_server.conf
+- name: edit_zabbix_server.conf_1
+  lineinfile:
+    path: "/etc/zabbix/zabbix_server.conf"
+    regexp: '^DBName= '
+    line: DBName={{ mysql_db_name }}
+
+
+- name: edit_zabbix_server.conf_2
+  lineinfile:
+    path: "/etc/zabbix/zabbix_server.conf"
+    regexp: '^DBUser= '
+    line: DBUser={{ mysql_user_name }}
+
+- name: edit_zabbix_server.conf_3
   lineinfile:
     path: "/etc/zabbix/zabbix_server.conf"
     regexp: '^DBPassword= '

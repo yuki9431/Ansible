@@ -3,6 +3,9 @@
   pip:
     name: pymysql
     state: present
+  notify:
+    - create_mysql_database
+    - create_mysql_user
 
 - name: Zabbix yum repository
   yum:
@@ -18,10 +21,10 @@
       - zabbix-web-mysql
       - zabbix-agent
   notify:
-    - create_mysql_database 
-    - create_mysql_user
     - init_mysql_for_zabbix
-    - edit_zabbix_server.conf
+    - edit_zabbix_server.conf_1
+    - edit_zabbix_server.conf_2
+    - edit_zabbix_server.conf_3
     - edit_zabbix.conf
     - restart_zabbix-server
     - restart_zabbix-agent
