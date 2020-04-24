@@ -1,0 +1,7 @@
+user: USER_NAME
+password: PASSWORD
+group: GROUP_NAME
+repo_base_url: BASE_URL
+mysql_db_name: DB_NAME
+mysql_user_name: DB_USER_NAME
+mysql_user_password: DB_PASSWORD
