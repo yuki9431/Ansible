@@ -4,4 +4,4 @@ mysql_db_name: DB_NAME
 mysql_user_name: DB_USER_NAME
 mysql_user_password: PASSWORD
 mysql_user_priv: '*.*:ALL,GRANT'
-timezone: Azia/Tokyo
+timezone: Asia/Tokyo
