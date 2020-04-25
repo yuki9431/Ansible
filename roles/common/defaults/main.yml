@@ -1,7 +1,4 @@
 ---
 user: USER_NAME
-uid: 1000
-shell: /bin/bash
 password: PASSWORD
 group: GROUP_NAME
-gid: 1000
