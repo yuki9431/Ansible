@@ -14,3 +14,5 @@ Zabbixのインストール & 起動を行う。
 ## 参考
 https://grimoire.f5.si/archives/92
 
+## Author
+[Dillen H. Tomida](https://twitter.com/t0mihir0)
